@@ -39,3 +39,4 @@ rsconnect/
 #Ignore data files
 *.csv
 *.json
+.Rproj.user

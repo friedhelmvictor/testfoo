@@ -18,10 +18,12 @@ The following is a summary of the features that are to be included. A checkmark 
 
 
 ### Related to token transfers
+- [x] Count of unique senders
+- [x] Count of unique receivers
 - [ ] Frequency
   - [ ] Per week
     - [ ] average
     - [ ] median
     - [ ] maximum
     - [ ] trend (slope?) fit
-- [ ] 
+- [x] Lifetime in blocks
