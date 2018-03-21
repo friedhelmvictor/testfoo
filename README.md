@@ -74,8 +74,11 @@ The following is a summary of the features that are to be included. A checkmark 
 ### External information
 #### Related to token price
 - [ ] Change in token price (how to measure?)
+
 #### Labeled data
-- [ ]
+- [ ] utility token or not?
+- [ ] fraudulent token?
+- [ ] trust score from etherscan?
 
 ### Combinations of the above
 - [ ] Account age of token holders (from first tx)
