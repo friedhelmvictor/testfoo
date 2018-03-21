@@ -1,4 +1,6 @@
-# Here be code
+## Requirements
+- PostgreSQL (keep track of your ``username``, ``password`` and ``database name`` of a newly created, empty database)
+- ``R``, ``RStudio`` and packages ``data.table``, ``RPostgreSQL``
 
 
 ## Implemented features
@@ -12,9 +14,10 @@ The following is a summary of the features that are to be included. A checkmark 
     - [ ] maximum
     - [ ] minimum
     - [ ] trend (slope?) fit
-- [ ] Number of token holders (balance > 0)
-  - [ ] total number after last transaction
-  - [ ] ?
+- [ ] Number of token holders
+  - [ ] where balance > 0
+  - [ ] total number of addresses seen
+  - [ ]
 
 
 ### Related to token transfers
