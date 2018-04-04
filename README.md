@@ -42,6 +42,8 @@ The following is a summary of the features that are to be included. A checkmark 
 
 #### Graph features
 - [x] Shortest path length (graph diameter)
+- [x] Count of strongly connected components
+- [x] Count of weakly connected components
 - [ ] Size of largest strongly connected component (fraction?)
 - [ ] Community structure (how to measure?)
 - [ ] Connectedness of the transaction graph

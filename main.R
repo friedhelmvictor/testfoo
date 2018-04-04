@@ -1,4 +1,5 @@
 library(data.table)
+library(igraph)
 
 
 config <- list(tokenTransfersFile = '~/workspaces/data/ethereum/latest/tokenTransfers.csv',
