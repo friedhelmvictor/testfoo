@@ -2,10 +2,9 @@ library(data.table)
 
 
 config <- list(tokenTransfersFile = '~/workspaces/data/ethereum/latest/tokenTransfers.csv',
-               dbConfig = list(host = 'localhost', user = 'postgres',
-                               password = 'postgres', dbname = 'postgres'),
+               dbConfig = list(host = 'localhost', user = 'postgres', password = 'postgres', dbname = 'postgres'),
                createPlots = FALSE,
-               rows = 1000000) # -1 for all
+               rows = 100) # -1 for all
 
 
 # TODO: Create config file with filename, and database details as well as what this script will build
@@ -20,6 +19,8 @@ if(exists("tokenTransfers") && is.data.table(get("tokenTransfers"))) {
   
   # Build balances database
   source("build_database.R")
+  
+  tokenTransfers[, timestamp := as.POSIXct(timestamp, origin="1970-01-01")]
   
   # Create empty feature table
   featureTable <- data.table(address=unique(tokenTransfers$address))

@@ -23,7 +23,8 @@ con <- dbConnect(PostgreSQL(), host=config$dbConfig$host,
                                     blockNumber='INT',
                                     from='VARCHAR(42)',
                                     to='VARCHAR(42)',
-                                    amount='DECIMAL(100,0)'))
+                                    amount='DECIMAL(100,0)',
+                                    timestamp='INT'))
     print(paste(Sys.time(), 'Creating indices...'))
     dbExecute(con, 'CREATE INDEX address_idx ON "tokenTransfers"(address);')
     print(paste(Sys.time(), 'Finished.'))
