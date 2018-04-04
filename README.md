@@ -41,7 +41,7 @@ The following is a summary of the features that are to be included. A checkmark 
 - [ ] Activity time of accounts (period between first and last tx, within cluster??)
 
 #### Graph features
-- [ ] Shortest path length
+- [x] Shortest path length (graph diameter)
 - [ ] Size of largest strongly connected component (fraction?)
 - [ ] Community structure (how to measure?)
 - [ ] Connectedness of the transaction graph
