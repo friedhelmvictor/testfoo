@@ -1,9 +1,9 @@
 library(data.table)
 library(igraph)
 
-
-config <- list(tokenTransfersFile = '~/workspaces/data/ethereum/latest/tokenTransfers.csv',
-               dbConfig = list(host = 'localhost', user = 'postgres', password = 'postgres', dbname = 'postgres'),
+# Pfad Bianca: '/Users/biancal/Documents/Paper_Token_Distributions/token_data/tokenTransfers.csv' und Passwort auf pw gesetzt 
+config <- list(tokenTransfersFile = '/Users/biancal/Documents/Paper_Token_Distributions/token_data/tokenTransfers.csv',
+               dbConfig = list(host = 'localhost', user = 'postgres', password = pw, dbname = 'postgres'),
                createPlots = FALSE,
                rows = 100) # -1 for all
 
@@ -35,3 +35,5 @@ if(exists("tokenTransfers") && is.data.table(get("tokenTransfers"))) {
 
 
 
+# Finish and disconnect from server
+dbDisconnect(con)
