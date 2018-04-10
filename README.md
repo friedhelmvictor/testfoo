@@ -41,6 +41,7 @@ The following is a summary of the features that are to be included. A checkmark 
 - [ ] Activity time of accounts (period between first and last tx, within cluster??)
 
 #### Graph features
+- [x] Density (graph_density.R)
 - [x] Shortest path length (graph diameter)
 - [x] Count of strongly connected components
 - [x] Count of weakly connected components
