@@ -24,7 +24,7 @@ The following is a summary of the features that are to be included. A checkmark 
 
 
 ### Related to token transfers
-- [ ] Total number of transfers
+- [x] Total number of transfers ([transfers_count.R](/features/transfers_count.R))
 - [x] Count of unique senders
 - [x] Count of unique receivers
 - [ ] Frequency
