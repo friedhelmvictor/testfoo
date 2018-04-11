@@ -3,7 +3,7 @@
 
 # Hint for speed: Use data.tables `set` and also `:=` to avoid copying the full table every time you do something
 
-# This function returns the number of different degrees in a graph 
+# This function returns the number of different degrees in a graph - here without "simplify"! 
 # Author: Bianca, added 11.4.2018
 
 
@@ -17,7 +17,7 @@ featureTable <- (function(tokenTransferTable, featureTable) {
   # Compute the feature: 
   feature <- tokenTransfers[, 
                             {setTxtProgressBar(progressBar, .GRP);
-                              list(graph_number_of_different_degrees = length(unique(degree(simplify(graph_from_data_frame(.SD[, list(from, to)])), loops = FALSE))))
+                              list(graph_number_of_different_degrees = length(unique(degree(graph_from_data_frame(.SD[, list(from, to)])), loops = FALSE)))
                             }
                             , by = address]
   close(progressBar)
