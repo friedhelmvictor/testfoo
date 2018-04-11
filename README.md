@@ -43,7 +43,7 @@ The following is a summary of the features that are to be included. A checkmark 
 #### Graph features
 - [x] Number of different degrees (graph_number_of_different_degrees.R)
 - [x] Density (graph_density.R)
-- [x] Shortest path length (graph diameter)
+- [x] Shortest path length (graph diameter) (at current status computed for the directed graph)
 - [x] Count of strongly connected components
 - [x] Count of weakly connected components
 - [ ] Size of largest strongly connected component (fraction?)
