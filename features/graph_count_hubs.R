@@ -17,11 +17,11 @@ featureTable <- (function(tokenTransferTable, featureTable) {
   # Compute the feature: 
   # Here, it can't be done in a single line
   # 1. Define a function that accepts an igraph-object as input and returns the number of hubs 
-  num_hubs <- function(tokengraph){
+  num_hubs <- function(tokengraph, parameter_mean_degree, parameter_share_of_max){
     temp <- data.frame(deg = degree(tokengraph))
     temp <- plyr::count(temp, "deg")
-    hubs <- temp[temp$deg > 15*mean(degree(tokengraph)), ] 
-    if(nrow(hubs) == 0){ hubs <- temp[temp$deg > 0.8*max(temp$deg), ] }
+    hubs <- temp[temp$deg > parameter_mean_degree*mean(degree(tokengraph)), ] 
+    if(nrow(hubs) == 0){ hubs <- temp[temp$deg > parameter_share_of_max*max(temp$deg), ] }
     num_hubs <- sum(hubs$freq)
     return(num_hubs)
   }
@@ -30,7 +30,7 @@ featureTable <- (function(tokenTransferTable, featureTable) {
   # still debatable whether we should simplify the graph here? 
   feature <- tokenTransfers[,
                             {setTxtProgressBar(progressBar, .GRP);
-                            list(graph_count_hubs = num_hubs(graph_from_data_frame(.SD[, list(from, to)])))
+                            list(graph_count_hubs = num_hubs(graph_from_data_frame(.SD[, list(from, to)]), 15, 0.8))
                             },
                             by = address]
   close(progressBar)
