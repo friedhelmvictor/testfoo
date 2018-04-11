@@ -4,7 +4,6 @@
 # Hint for speed: Use data.tables `set` and also `:=` to avoid copying the full table every time you do something
 
 # This function returns the density of the token distribution graph
-
 # Author: Bianca, added 10.4.2018
 
 
