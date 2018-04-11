@@ -47,6 +47,7 @@ The following is a summary of the features that are to be included. A checkmark 
 - [x] Count of strongly connected components
 - [x] Count of weakly connected components
 - [ ] Size of largest strongly connected component (fraction?)
+- [x] Number of hubs (computation might be debatable, graph_count_hubs.R)
 - [ ] Community structure (how to measure?)
 - [ ] Connectedness of the transaction graph
 - [ ] Graph randomness (Louvain community detection algorithm?)
