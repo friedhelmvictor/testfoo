@@ -46,7 +46,7 @@ The following is a summary of the features that are to be included. A checkmark 
 - [x] Shortest path length (graph diameter) (at current status computed for the directed graph)
 - [x] Count of strongly connected components
 - [x] Count of weakly connected components
-- [ ] Size of largest strongly connected component (fraction?)
+- [x] Fraction of nodes in the largest strongly connected component 
 - [x] Number of hubs (computation might be debatable, graph_count_hubs.R)
 - [ ] Community structure (how to measure?)
 - [ ] Connectedness of the transaction graph
