@@ -33,7 +33,7 @@ The following is a summary of the features that are to be included. A checkmark 
     - [ ] median
     - [ ] maximum
     - [ ] trend (slope?) fit
-- [x] Lifetime in blocks
+- [x] Lifetime in blocks ([transfers_lifespan_blocks.R](/features/transfers_lifespan_blocks.R))
 - [ ] Time gaps between transfers
  - [ ] Average, Max, Median
 - [ ] Maximum number of tokens in a transaction
