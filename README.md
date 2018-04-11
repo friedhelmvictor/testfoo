@@ -24,7 +24,7 @@ The following is a summary of the features that are to be included. A checkmark 
 
 
 ### Related to token transfers
-- [ ] Total number of transfers
+- [x] Total number of transfers ([transfers_count.R](/features/transfers_count.R))
 - [x] Count of unique senders
 - [x] Count of unique receivers
 - [ ] Frequency
@@ -33,9 +33,8 @@ The following is a summary of the features that are to be included. A checkmark 
     - [ ] median
     - [ ] maximum
     - [ ] trend (slope?) fit
-- [x] Lifetime in blocks
-- [ ] Time gaps between transfers
- - [ ] Average, Max, Median
+- [x] Lifetime in blocks ([transfers_lifespan_blocks.R](/features/transfers_lifespan_blocks.R))
+- [x] Time gaps between transfers (mean, median, min, max) ([transfers_timegap.R](/features/transfers_timegap.R))
 - [ ] Maximum number of tokens in a transaction
 - [ ] How many addresses only receive and never send?
 - [ ] Activity time of accounts (period between first and last tx, within cluster??)
@@ -46,7 +45,7 @@ The following is a summary of the features that are to be included. A checkmark 
 - [x] Shortest path length (graph diameter) (at current status computed for the directed graph)
 - [x] Count of strongly connected components
 - [x] Count of weakly connected components
-- [x] Fraction of nodes in the largest strongly connected component 
+- [x] Fraction of nodes in the largest strongly connected component
 - [x] Number of hubs (computation might be debatable, graph_count_hubs.R)
 - [ ] Community structure (how to measure?)
 - [ ] Connectedness of the transaction graph
