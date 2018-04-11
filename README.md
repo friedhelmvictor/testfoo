@@ -14,7 +14,7 @@ The following is a summary of the features that are to be included. A checkmark 
     - [ ] maximum
     - [ ] minimum
     - [ ] trend (slope?) fit
-- [ ] Number of token holders
+- [ ] Number of token holders (same as [graph_count_nodes.R](/features/graph_count_nodes.R))
   - [ ] where balance > 0
   - [ ] total number of addresses seen
   - [ ] trend (change per week as a fit)
@@ -40,6 +40,7 @@ The following is a summary of the features that are to be included. A checkmark 
 - [ ] Activity time of accounts (period between first and last tx, within cluster??)
 
 #### Graph features
+- [x] Number of nodes ([graph_count_nodes.R](/features/graph_count_nodes.R)) 
 - [x] Number of different degrees ([graph_number_of_different_degrees.R](/features/graph_number_of_different_degrees.R))
 - [x] Density ([graph_density.R](/features/graph_density.R))
 - [x] Shortest path length (graph diameter) (at current status computed for the directed graph) ([graph_diameter.R](/features/graph_diameter.R))
