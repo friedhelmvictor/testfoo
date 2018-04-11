@@ -1,14 +1,12 @@
 library(data.table)
 library(igraph)
 
-# Pfad Bianca: '/Users/biancal/Documents/Paper_Token_Distributions/token_data/tokenTransfers.csv' und Passwort auf pw gesetzt 
-config <- list(tokenTransfersFile = '/Users/biancal/Documents/Paper_Token_Distributions/token_data/tokenTransfers.csv',
-               dbConfig = list(host = 'localhost', user = 'postgres', password = pw, dbname = 'postgres'),
-               createPlots = FALSE,
-               rows = 50000) # -1 for all
+if(!file.exists("config.R")) {
+  stop("You must have a config.R file!")
+} else {
+  source("config.R")
+}
 
-
-# TODO: Create config file with filename, and database details as well as what this script will build
 tokenTransfers <- fread(config$tokenTransfersFile,
                         colClasses = list("character"=c("address", "from", "to", "amount")),
                         nrows = config$rows)

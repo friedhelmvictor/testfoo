@@ -40,3 +40,7 @@ rsconnect/
 *.csv
 *.json
 .Rproj.user
+
+
+# Ignore custom config file
+config.R

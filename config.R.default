@@ -1,0 +1,10 @@
+# This is the default config file
+# Create your own from it and rename it to config.R
+
+config <- list(tokenTransfersFile = '/path/to/your/tokenTransfers.csv',
+               dbConfig = list(host = 'localhost',
+                               user = 'postgres',
+                               password = 'password',
+                               dbname = 'postgres'),
+               createPlots = FALSE,
+               rows = 50000) # -1 for all
