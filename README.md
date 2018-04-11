@@ -34,8 +34,7 @@ The following is a summary of the features that are to be included. A checkmark 
     - [ ] maximum
     - [ ] trend (slope?) fit
 - [x] Lifetime in blocks ([transfers_lifespan_blocks.R](/features/transfers_lifespan_blocks.R))
-- [ ] Time gaps between transfers
- - [ ] Average, Max, Median
+- [ ] Time gaps between transfers (mean, median, min, max) ([transfers_timegap.R](/features/transfers_timegap.R))
 - [ ] Maximum number of tokens in a transaction
 - [ ] How many addresses only receive and never send?
 - [ ] Activity time of accounts (period between first and last tx, within cluster??)
