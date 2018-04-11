@@ -40,13 +40,13 @@ The following is a summary of the features that are to be included. A checkmark 
 - [ ] Activity time of accounts (period between first and last tx, within cluster??)
 
 #### Graph features
-- [x] Number of different degrees (graph_number_of_different_degrees.R)
-- [x] Density (graph_density.R)
-- [x] Shortest path length (graph diameter) (at current status computed for the directed graph)
-- [x] Count of strongly connected components
-- [x] Count of weakly connected components
-- [x] Fraction of nodes in the largest strongly connected component
-- [x] Number of hubs (computation might be debatable, graph_count_hubs.R)
+- [x] Number of different degrees (``graph_number_of_different_degrees.R``)
+- [x] Density (``graph_density.R``)
+- [x] Shortest path length (graph diameter) (at current status computed for the directed graph) (``graph_diameter.R``)
+- [x] Count of strongly connected components (``graph_count_strong_components.R``)
+- [x] Count of weakly connected components (``graph_count_weak_components.R``)
+- [x] Fraction of nodes in the largest strongly connected component (``graph_fraction_nodes_largest_scc.R``)
+- [x] Number of hubs (computation might be debatable, ``graph_count_hubs.R``)
 - [ ] Community structure (how to measure?)
 - [ ] Connectedness of the transaction graph
 - [ ] Graph randomness (Louvain community detection algorithm?)
@@ -60,7 +60,7 @@ The following is a summary of the features that are to be included. A checkmark 
   - [ ] average path length
 - [ ] number of edges vs number of nodes in log-log scales determine if the graph obeys the densification power law (how to convert to feature?)
 - [ ] number of multi-edges
-- [ ] number of loops
+- [x] Number of loops (``graph_count_loops.R``)
 - [ ] log-log plot of cumulative degree distributions (how to feature?)
   - [ ] power-law fit and p-value analysis using Clauset/Shalizi/Newman; (how to feature?)
 
