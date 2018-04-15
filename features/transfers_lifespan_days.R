@@ -14,12 +14,12 @@ featureTable <- (function(tokenTransferTable, featureTable) {
   numberOfGroups = uniqueN(tokenTransfers$address)
   progressBar <- txtProgressBar(min = 0, max = numberOfGroups, style = 3)
   
-  # Compute the feature: 
-  feature <- tokenTransfers[, 
-                            {setTxtProgressBar(progressBar, .GRP);
-                              list(transfers_lifespan_period = as.character(lubridate::seconds_to_period(max(blockNumber) - min(blockNumber))*10))
-                            },
-                            by = address]
+  daysec <- 60*60*24
+  
+  # Compute the feature
+  feature <- tokenTransfers[, {setTxtProgressBar(progressBar, .GRP);
+    list(lifespan_days = (as.numeric(max(timestamp)) - as.numeric(min(timestamp)))/daysec)
+  }, by=address]
   close(progressBar)
   
   # Join the result with the featureTable

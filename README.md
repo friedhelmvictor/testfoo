@@ -34,14 +34,14 @@ The following is a summary of the features that are to be included. A checkmark 
     - [ ] maximum
     - [ ] trend (slope?) fit
 - [x] Lifetime in blocks ([transfers_lifespan_blocks.R](/features/transfers_lifespan_blocks.R))
-- [x] Estimated lifetime in human-readable format, assuming that a block is mined every 10 seconds ([transfers_lifespan_period.R](/features/transfers_lifespan_period.R))
+- [x] Lifetime in days ([transfers_lifespan_days.R](/features/transfers_lifespan_days.R))
 - [x] Time gaps between transfers (mean, median, min, max) ([transfers_timegap.R](/features/transfers_timegap.R))
 - [ ] Maximum number of tokens in a transaction
 - [ ] How many addresses only receive and never send?
 - [ ] Activity time of accounts (period between first and last tx, within cluster??)
 
 #### Graph features
-- [x] Number of nodes ([graph_count_nodes.R](/features/graph_count_nodes.R)) 
+- [x] Number of nodes ([graph_count_nodes.R](/features/graph_count_nodes.R))
 - [x] Number of edges (is the same as the number of transfers - [transfers_count.R](/features/transfers_count.R))
 - [x] Number of different degrees ([graph_number_of_different_degrees.R](/features/graph_number_of_different_degrees.R))
 - [x] Density ([graph_density.R](/features/graph_density.R))
