@@ -13,7 +13,7 @@ featureTable <- (function(tokenTransferTable, featureTable) {
   
   # Compute the feature
   feature <- tokenTransfers[, {setTxtProgressBar(progressBar, .GRP);
-    list(lifespan_blocks = max(blockNumber) - min(blockNumber))
+    list(transfers_lifespan_blocks = max(blockNumber) - min(blockNumber))
   }, by=address]
   close(progressBar)
   

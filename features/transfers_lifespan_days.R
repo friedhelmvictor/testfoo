@@ -18,7 +18,7 @@ featureTable <- (function(tokenTransferTable, featureTable) {
   
   # Compute the feature
   feature <- tokenTransfers[, {setTxtProgressBar(progressBar, .GRP);
-    list(lifespan_days = (as.numeric(max(timestamp)) - as.numeric(min(timestamp)))/daysec)
+    list(transfers_lifespan_days = (as.numeric(max(timestamp)) - as.numeric(min(timestamp)))/daysec)
   }, by=address]
   close(progressBar)
   

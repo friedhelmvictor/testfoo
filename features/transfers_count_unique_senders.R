@@ -13,7 +13,7 @@ featureTable <- (function(tokenTransferTable, featureTable) {
   
   # Compute the feature
   feature <- tokenTransfers[, {setTxtProgressBar(progressBar, .GRP);
-    list(count_unique_sender = uniqueN(from))
+    list(transfers_count_unique_sender = uniqueN(from))
   }, by=address]
   close(progressBar)
   
