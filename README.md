@@ -33,10 +33,10 @@ The following is a summary of the features that are to be included. A checkmark 
     - [ ] median
     - [ ] maximum
     - [ ] trend (slope?) fit
-- [x] Lifetime in blocks ([transfers_lifespan_blocks.R](/features/transfers_lifespan_blocks.R))
-- [x] Lifetime in days ([transfers_lifespan_days.R](/features/transfers_lifespan_days.R))
+- [x] Lifetime in blocks (between first and last transfer) ([transfers_lifespan_blocks.R](/features/transfers_lifespan_blocks.R))
+- [x] Lifetime in days (between first and last transfer) ([transfers_lifespan_days.R](/features/transfers_lifespan_days.R))
+- [x] Days since last transfer ([transfers_days_since_last.R](/features/transfers_days_since_last.R))
 - [x] Time gaps between transfers (mean, median, min, max) ([transfers_timegap.R](/features/transfers_timegap.R))
-- [ ] Maximum number of tokens in a transaction
 - [ ] How many addresses only receive and never send?
 - [ ] Activity time of accounts (period between first and last tx, within cluster??)
 
@@ -88,6 +88,7 @@ The following is a summary of the features that are to be included. A checkmark 
 - [ ] trust score from etherscan?
 
 ### Combinations of the above
+- [ ] Maximum number of tokens in a transaction
 - [ ] Account age of token holders (from first tx)
 - [ ] ICO features (combine normal tx with token tx)
   - [ ] ICO participants
@@ -96,7 +97,6 @@ The following is a summary of the features that are to be included. A checkmark 
 - [ ] Ratio of users that interacted with contract vs. number of users holding a token (at what time?)
 - [ ] Average / maximum value of transactions in USD
 - [ ] Trading volume (daily)? (How to measure?)
-- [ ]
 
 
 ### Other ideas
