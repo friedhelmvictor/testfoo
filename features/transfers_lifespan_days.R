@@ -3,12 +3,8 @@
 
 # Hint for speed: Use data.tables `set` and also `:=` to avoid copying the full table every time you do something
 
-# This function returns the lifetime of a token distribution (its lifespan period) in a human readable format 
-# Author: Bianca, added 11.4.2018
-
-
 featureTable <- (function(tokenTransferTable, featureTable) {
-  print("Computing the lifetime period")
+  print("Computing the lifetime in days")
   
   # Set up progress bbar by number of groups
   numberOfGroups = uniqueN(tokenTransfers$address)
