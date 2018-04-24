@@ -50,6 +50,7 @@ The following is a summary of the features that are to be included. A checkmark 
 - [x] Count of weakly connected components ([graph_count_weak_components.R](/features/graph_count_weak_components.R))
 - [x] Fraction of nodes in the largest strongly connected component ([graph_fraction_nodes_largest_scc.R](/features/graph_fraction_nodes_largest_scc.R))
 - [x] Number of hubs (computation might be debatable, [graph_count_hubs.R](/features/graph_count_hubs.R))
+- [x] Degree Power-Law coefficient and KS goodness-of-fit([graph_degree_power_law_fit.R](/features/graph_degree_power_law_fit.R))
 - [ ] Community structure (how to measure?)
 - [ ] Connectedness of the transaction graph
 - [ ] Graph randomness (Louvain community detection algorithm?)
