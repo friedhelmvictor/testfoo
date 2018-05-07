@@ -45,6 +45,7 @@ The following is a summary of the features that are to be included. A checkmark 
 - [x] Number of edges ([graph_count_edges.R](/features/graph_count_edges.R))
 - [x] Number of different degrees ([graph_number_of_different_degrees.R](/features/graph_number_of_different_degrees.R))
 - [x] Density ([graph_density.R](/features/graph_density.R))
+- [ ] Mean geodesic distance (Newman - Networks) 
 - [x] Shortest path length (graph diameter) (at current status computed for the directed graph) ([graph_diameter.R](/features/graph_diameter.R))
 - [x] Count of strongly connected components ([graph_count_strong_components.R](/features/graph_count_strong_components.R))
 - [x] Count of weakly connected components ([graph_count_weak_components.R](/features/graph_count_weak_components.R))
