@@ -71,6 +71,7 @@ The following is a summary of the features that are to be included. A checkmark 
 - [x] Number of loops ([graph_count_loops.R](/features/graph_count_loops.R))
 - [ ] log-log plot of cumulative degree distributions (how to feature?)
   - [ ] power-law fit and p-value analysis using Clauset/Shalizi/Newman; (how to feature?)
+  - [ ] fraction of edges that connect to the vertices with the highest degrees (Q: Should this be connected to the hubs we compute above? Should we refer to the same nodes here?)
 
 
 
