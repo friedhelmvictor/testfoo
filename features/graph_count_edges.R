@@ -16,7 +16,7 @@ featureTable <- (function(tokenTransferTable, featureTable) {
   # Compute the feature
   feature <- tokenTransfers[,
                             {setTxtProgressBar(progressBar, .GRP);
-                              list(graph_count_edges = ecount(graph_from_data_frame(.SD[, list(from, to)])))
+                              list(graph_count_edges = igraph::ecount(igraph::graph_from_data_frame(.SD[, list(from, to)])))
                             },
                             by = address]
   close(progressBar)

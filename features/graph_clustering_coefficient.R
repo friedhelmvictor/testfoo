@@ -17,7 +17,7 @@ featureTable <- (function(tokenTransferTable, featureTable) {
   # Compute the feature: 
   feature <- tokenTransfers[, 
                             {setTxtProgressBar(progressBar, .GRP);
-                              list(graph_clustering_coefficient = transitivity(graph_from_data_frame(.SD[, list(from, to)]), type = "global"))
+                              list(graph_clustering_coefficient = igraph::transitivity(igraph::graph_from_data_frame(.SD[, list(from, to)]), type = "global"))
                             },
                             by = address]
   close(progressBar)

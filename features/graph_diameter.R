@@ -13,7 +13,7 @@ featureTable <- (function(tokenTransferTable, featureTable) {
   
   # Compute the feature
   feature <- tokenTransfers[, {setTxtProgressBar(progressBar, .GRP);
-    list(graph_diameter = diameter(graph_from_data_frame(.SD[, list(from, to)])))
+    list(graph_diameter = igraph::diameter(igraph::graph_from_data_frame(.SD[, list(from, to)])))
   }, by=address]
   close(progressBar)
   

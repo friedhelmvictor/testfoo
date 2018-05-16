@@ -15,12 +15,12 @@ featureTable <- (function(tokenTransferTable, featureTable) {
   progressBar <- txtProgressBar(min = 0, max = numberOfGroups, style = 3)
   
   # Compute the feature: 
-  # we start with the entire data table - "by = address" subsets for each token - then a graph is built from only the "from" and "to" - and the amount of strongly connected components computed 
-  # Find the token transfers associated with this token , Build the graph and simplify it, compute density for simplified graph (is not defined for multiedges)
+  # We start with the entire data table - "by = address" subsets for each token - then a graph is built from only the "from" and "to".
+  # Find the token transfers associated with this token, Build the graph and simplify it, compute density for simplified graph (is not defined for multiedges)
   # evtl. simplify rausnehmen? 
   feature <- tokenTransfers[, 
                             {setTxtProgressBar(progressBar, .GRP);
-                              list(graph_density = edge_density(simplify(graph_from_data_frame(.SD[, list(from, to)])), loops = FALSE))
+                              list(graph_density = igraph::edge_density(igraph::simplify(igraph::graph_from_data_frame(.SD[, list(from, to)])), loops = FALSE))
                             }
                             , by = address]
   close(progressBar)
