@@ -37,7 +37,7 @@ The following is a summary of the features that are to be included. A checkmark 
 - [x] Lifetime in days (between first and last transfer) ([transfers_lifespan_days.R](/features/transfers_lifespan_days.R))
 - [x] Days since last transfer ([transfers_days_since_last.R](/features/transfers_days_since_last.R))
 - [x] Time gaps between transfers (mean, median, min, max) ([transfers_timegap.R](/features/transfers_timegap.R))
-- [ ] How many addresses only receive and never send?
+- [x] How many addresses only receive and never send? ([transfers_count_unique_sink_recipients.R](/features/transfers_count_unique_sink_recipients.R))
 - [ ] Activity time of accounts (period between first and last tx, within cluster??)
 
 #### Graph features
