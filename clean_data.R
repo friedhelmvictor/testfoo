@@ -1,6 +1,16 @@
 print("Cleaning data")
 # TBD
 
+appliedFilters <- data.table("Filter" = character(0),
+                             "Contracts removed" = numeric(0),
+                             "(%)" = numeric(0),
+                             "Contracts remaining" = numeric(0),
+                             "Transfers removed" = numeric(0),
+                             "(%)" = numeric(0),
+                             "Transfers remaining" = numeric(0)
+                             )
+
+appliedFilters <<- rbind(appliedFilters, list("None - Original dataset", 0, 0, length(unique(tokenTransfers$address)), 0, 0, nrow(tokenTransfers)))
 
 tokenTransfers <- (function() {
   
@@ -23,21 +33,46 @@ tokenTransfers <- (function() {
                  "Remaining: ", newTokenContractCount))
     print(paste0("Thus, ", transfersRemoved, " (",transfersRemovedPerc,"%) ", "transfers are removed. ",
                  "Remaining: ", newTotalTransferCount))
+    
+    appliedFilters <<- rbind(appliedFilters, list(filterDescription,
+                                                 tokenContractsRemoved, tokenContractsRemovedPerc, newTokenContractCount,
+                                                 transfersRemoved, transfersRemovedPerc, newTotalTransferCount))
   }
+  
+  
+  
+  
+  
   
   #################################################################################################
   ################################ here the actual filters start ##################################
   #################################################################################################
   
-  # tokens which have experienced at least 30 transfers 
-  minTransferCount <- 30
+  # tokens which have  at least 1000 addresses involved 
+  minAddressCount <- 1000
   filteredTokenTransfers <-
-    tokenTransfers[address %in% tokenTransfers[, list(count = .N), by=address][
-      count > minTransferCount
+    tokenTransfers[address %in% tokenTransfers[, list(uniqueAddr = uniqueN(rbind(from, to))), by=address][
+      uniqueAddr >= minAddressCount
       ]$address]
   
   compareTokenTransferTables(tokenTransfers, filteredTokenTransfers,
-                             paste("require minimum transfer count of", minTransferCount))
+                             paste("Require address count >=", minAddressCount))
+  
+  
+  
+  # tokens which have at least 10000 transfers 
+  minTransferCount <- 10000
+  filteredTokenTransfers <-
+    tokenTransfers[address %in% tokenTransfers[, list(count = .N), by=address][
+      count >= minTransferCount
+      ]$address]
+  
+  compareTokenTransferTables(tokenTransfers, filteredTokenTransfers,
+                             paste("Require transfer count >=", minTransferCount))
+  
+  
+  tokenTransfers <- filteredTokenTransfers
+
   
   
   return(filteredTokenTransfers)
@@ -47,8 +82,3 @@ tokenTransfers <- (function() {
 
 # 1. tokens which are in erc20contractstats (because then we have their name and symbol)
 # 2. only include tokens which appear in more than one block (because then there is some action)
-
-
-
-# TODO:
-# include some output how many transfers / tokenContracts we have excluded due to which step
