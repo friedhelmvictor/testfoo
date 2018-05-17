@@ -44,3 +44,10 @@ rsconnect/
 
 # Ignore custom config file
 config.R
+
+# Ignore output directory
+outputs
+
+# Ignore any images and pdfs
+*.png
+*.pdf
