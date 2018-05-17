@@ -42,7 +42,7 @@ The following is a summary of the features that are to be included. A checkmark 
 
 #### Graph features
 - [x] Number of nodes ([graph_count_nodes.R](/features/graph_count_nodes.R))
-- [x] Number of edges ([graph_count_edges.R](/features/graph_count_edges.R))
+- [x] Number of unique edges ([graph_count_unique_edges.R](/features/graph_count_unique_edges.R))
 - [x] Number of different degrees ([graph_number_of_different_degrees.R](/features/graph_number_of_different_degrees.R))
 - [x] Density ([graph_density.R](/features/graph_density.R))
 - [ ] Mean geodesic distance (Newman - Networks) 
