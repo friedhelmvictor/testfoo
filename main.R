@@ -20,11 +20,24 @@ tokenTransfers <- unique(fread(config$tokenTransfersFile,
                                colClasses = list("character"=c("address", "from", "to", "amount")),
                                nrows = config$rows))
 
+tokenCreations <- unique(fread(config$tokenCreationsFile,
+                               colClasses = list("character"=c("address", "from", "to", "amount"))))
+
 # limit tokenTransfers to those that belong to valid ERC20 contracts
 tokenTransfers <- tokenTransfers[address %in% erc20ContractStats$address]
 
-#limit erc20ContractStats to those that have had at least one event
+# limit erc20ContractStats to those that have had at least one event
 erc20ContractStats <- erc20ContractStats[address %in% unique(tokenTransfers$address)]
+
+# check which tokenCreations already exists as transfers
+setkey(tokenCreations, address, blockNumber, to, amount)
+setkey(tokenTransfers, address, blockNumber, to, amount)
+tokenCreations[, exists := FALSE][tokenTransfers, exists := TRUE]
+
+# add tokenCreations that didn't exist in transfers to tokenTransfers
+tokenTransfers <- rbind(tokenTransfers, tokenCreations[exists == FALSE, list(address, blockNumber, from, to, amount, timestamp)])
+# remove tokenCreations
+rm(tokenCreations)
 
 # verify data 
 head(tokenTransfers)
@@ -33,7 +46,7 @@ head(tokenTransfers)
 if(exists("tokenTransfers") && is.data.table(get("tokenTransfers"))) {
   
   # Generate plots on uncleaned data
-  source("plot_beforefilter")
+  source("plot_beforefilter.R")
   
   # Clean the data
   source("clean_data.R")
@@ -56,6 +69,4 @@ if(exists("tokenTransfers") && is.data.table(get("tokenTransfers"))) {
   rm(ignoreOutput)
 }
 
-
-# Finish and disconnect from server
-dbDisconnect(con)
+fwrite(featureTable, file = "featureTable2.csv")
