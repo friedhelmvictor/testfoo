@@ -1,5 +1,10 @@
 library(data.table)
 library(igraph)
+library(ggplot2)
+library(scales)
+
+options(scipen = 99999999) # display numbers non-scientific
+
 
 if(!file.exists("config.R")) {
   stop("You must have a config.R file!")
@@ -7,14 +12,28 @@ if(!file.exists("config.R")) {
   source("config.R")
 }
 
-tokenTransfers <- fread(config$tokenTransfersFile,
-                        colClasses = list("character"=c("address", "from", "to", "amount")),
-                        nrows = config$rows)
+erc20ContractStats <- unique(fread(config$contractStatsFile,
+                                   colClasses = list("character"=c("result.address"))))
+names(erc20ContractStats)[names(erc20ContractStats) == 'result.address'] <- 'address'
+
+tokenTransfers <- unique(fread(config$tokenTransfersFile,
+                               colClasses = list("character"=c("address", "from", "to", "amount")),
+                               nrows = config$rows))
+
+# limit tokenTransfers to those that belong to valid ERC20 contracts
+tokenTransfers <- tokenTransfers[address %in% erc20ContractStats$address]
+
+#limit erc20ContractStats to those that have had at least one event
+erc20ContractStats <- erc20ContractStats[address %in% unique(tokenTransfers$address)]
+
 # verify data 
 head(tokenTransfers)
 
 
 if(exists("tokenTransfers") && is.data.table(get("tokenTransfers"))) {
+  
+  # Generate plots on uncleaned data
+  source("plot_beforefilter")
   
   # Clean the data
   source("clean_data.R")
@@ -26,6 +45,9 @@ if(exists("tokenTransfers") && is.data.table(get("tokenTransfers"))) {
   
   # Create empty feature table
   featureTable <- data.table(address=unique(tokenTransfers$address))
+  
+  # Add names from contractStats file
+  featureTable <- featureTable[erc20ContractStats[,list(address, name)], on="address", nomatch=0]
   
   # Execute all files inside /features thereby building the featureTable
   fileSources <- list.files(pattern = "*.R", recursive = T)
