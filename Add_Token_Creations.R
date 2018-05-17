@@ -35,3 +35,28 @@ first_node <- substr(as_ids(E(subg)[1]), start = 1, stop = 42)
 # add an edge from the contract address to this node 
 plot(subg)
 subg <- subg %>% add.edges(c(sample_token, first_node), timestamp = 11111)
+
+#============================================================
+
+sample_token <- "0x0d8775f648430679a709e98d2b0cb6250d2887ef"
+
+getCreations <- function(contractAddress) {
+  sample_transfers <- tokenTransfers[address == contractAddress]
+  g <- graph_from_data_frame(sample_transfers[, c("from", "to", "timestamp")])
+  component <- components(g, mode = "weak")$membership # has 92 components
+  component_membership <- setDT(data.frame(component), keep.rownames = "from")
+  
+  transfers_with_component <- merge(sample_transfers, component_membership, all.x = TRUE)
+  creations <- transfers_with_component[order(rank(timestamp))][
+    , list(from="creator",
+           to=head(from, 1),
+           address=head(address, 1),
+           blockNumber=head(blockNumber, 1),
+           timestamp=head(timestamp, 1),
+           amount = head(amount, 1)
+    ), by=component][, list(address, blockNumber, from, to, amount, timestamp)]
+  return(creations)
+}
+
+tokenContracts <- unique(tokenTransfers$address)
+allCreations <- do.call(rbind, lapply(tokenContracts, getCreations))
