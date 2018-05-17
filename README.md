@@ -2,6 +2,11 @@
 - PostgreSQL (keep track of your ``username``, ``password`` and ``database name`` of a newly created, empty database)
 - ``R``, ``RStudio`` and packages ``data.table``, ``RPostgreSQL``
 
+- copy the ``config.R.default`` to ``config.R`` and adjust your file locations and parameters
+- you need the following files:
+  - ``erc20ContractStats.csv``
+  - ``tokenTransfers.csv``
+  - ``tokenCreations.csv``
 
 ## Implemented features
 
@@ -45,7 +50,7 @@ The following is a summary of the features that are to be included. A checkmark 
 - [x] Number of unique edges ([graph_count_unique_edges.R](/features/graph_count_unique_edges.R))
 - [x] Number of different degrees ([graph_number_of_different_degrees.R](/features/graph_number_of_different_degrees.R))
 - [x] Density ([graph_density.R](/features/graph_density.R))
-- [ ] Mean geodesic distance (Newman - Networks) 
+- [ ] Mean geodesic distance (Newman - Networks)
 - [x] Shortest path length (graph diameter) (at current status computed for the directed graph) ([graph_diameter.R](/features/graph_diameter.R))
 - [x] Count of strongly connected components ([graph_count_strong_components.R](/features/graph_count_strong_components.R))
 - [x] Count of weakly connected components ([graph_count_weak_components.R](/features/graph_count_weak_components.R))

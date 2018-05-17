@@ -1,7 +1,10 @@
 # This is the default config file
 # Create your own from it and rename it to config.R
 
-config <- list(tokenTransfersFile = '/path/to/your/tokenTransfers.csv',
+config <- list(contractStatsFile = '/path/to/your/erc20contractStats.csv',
+               tokenTransfersFile = '/path/to/your/tokenTransfers.csv',
+               tokenCreationsFile = '/path/to/your/tokenCreations.csv',
+
                dbConfig = list(host = 'localhost',
                                user = 'postgres',
                                password = 'password',
