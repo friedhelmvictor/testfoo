@@ -20,14 +20,11 @@ tokenTransfers <- unique(fread(config$tokenTransfersFile,
                                colClasses = list("character"=c("address", "from", "to", "amount")),
                                nrows = config$rows))
 
+# remove 0 transfers
+tokenTransfers <- tokenTransfers[amount != "0"]
+
 tokenCreations <- unique(fread(config$tokenCreationsFile,
                                colClasses = list("character"=c("address", "from", "to", "amount"))))
-
-# limit tokenTransfers to those that belong to valid ERC20 contracts
-tokenTransfers <- tokenTransfers[address %in% erc20ContractStats$address]
-
-# limit erc20ContractStats to those that have had at least one event
-erc20ContractStats <- erc20ContractStats[address %in% unique(tokenTransfers$address)]
 
 # check which tokenCreations already exists as transfers
 setkey(tokenCreations, address, blockNumber, to, amount)
@@ -39,8 +36,12 @@ tokenTransfers <- rbind(tokenTransfers, tokenCreations[exists == FALSE, list(add
 # remove tokenCreations
 rm(tokenCreations)
 
-# verify data 
-head(tokenTransfers)
+# limit tokenTransfers to those that belong to valid ERC20 contracts
+tokenTransfers <- tokenTransfers[address %in% erc20ContractStats$address]
+
+# limit erc20ContractStats to those that have had at least one event
+erc20ContractStats <- erc20ContractStats[address %in% unique(tokenTransfers$address)]
+
 
 
 if(exists("tokenTransfers") && is.data.table(get("tokenTransfers"))) {
