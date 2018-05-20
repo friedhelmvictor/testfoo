@@ -13,7 +13,9 @@ featureTable <- (function(tokenTransferTable, featureTable) {
   
   # Compute the feature
   feature <- tokenTransfers[, {setTxtProgressBar(progressBar, .GRP);
-    list(graph_count_weak_components = components(graph_from_data_frame(.SD[, list(from, to)]), mode = "weak")$no)
+    weakcomponents <- components(graph_from_data_frame(.SD[, list(from, to)]), mode = "weak");
+    list(graph_count_weak_components = weakcomponents$no,
+         graph_count_nodes_largest_wcc = max(weakcomponents$csize))
   }, by=address]
   close(progressBar)
   

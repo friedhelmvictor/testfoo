@@ -54,6 +54,7 @@ The following is a summary of the features that are to be included. A checkmark 
 - [x] Shortest path length (graph diameter) (at current status computed for the directed graph) ([graph_diameter.R](/features/graph_diameter.R))
 - [x] Count of strongly connected components ([graph_count_strong_components.R](/features/graph_count_strong_components.R))
 - [x] Count of weakly connected components ([graph_count_weak_components.R](/features/graph_count_weak_components.R))
+- [x] Count nodes in largest weakly connected component ([graph_count_weak_components.R](/features/graph_count_weak_components.R))
 - [x] Fraction of nodes in the largest strongly connected component ([graph_fraction_nodes_largest_scc.R](/features/graph_fraction_nodes_largest_scc.R))
 - [x] Number of hubs (computation might be debatable, [graph_count_hubs.R](/features/graph_count_hubs.R))
 - [x] Degree Power-Law coefficient and KS goodness-of-fit ([graph_degree_power_law_fit.R](/features/graph_degree_power_law_fit.R))
