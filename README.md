@@ -54,6 +54,7 @@ The following is a summary of the features that are to be included. A checkmark 
 - [x] Mean, median geodesic distance (mean, median eccentricity) from v to any other v' ([graph_radius_diameter_eccentricity.R](/features/graph_radius_diameter_eccentricity.R))
 - [x] Diameter (at current status computed for the directed graph) ([graph_radius_diameter_eccentricity.R](/features/graph_radius_diameter_eccentricity.R))
 - [x] Radius ([graph_radius_diameter_eccentricity.R](/features/graph_radius_diameter_eccentricity.R))
+- [x] Count of symmetric edges ([graph_count_symmetric_edges.R](/features/ggraph_count_symmetric_edges.R))
 - [x] Count of strongly connected components ([graph_count_strong_components.R](/features/graph_count_strong_components.R))
 - [x] Count of weakly connected components ([graph_count_weak_components.R](/features/graph_count_weak_components.R))
 - [x] Count nodes in largest weakly connected component ([graph_count_weak_components.R](/features/graph_count_weak_components.R))
