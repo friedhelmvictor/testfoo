@@ -49,7 +49,7 @@ tokenTransfers <- (function() {
   #################################################################################################
   
   # tokens which have  at least 1000 addresses involved 
-  minAddressCount <- 1000
+  minAddressCount <- 2
   filteredTokenTransfers <-
     tokenTransfers[address %in% tokenTransfers[, list(uniqueAddr = uniqueN(rbind(from, to))), by=address][
       uniqueAddr >= minAddressCount
@@ -61,7 +61,7 @@ tokenTransfers <- (function() {
   
   
   # tokens which have at least 10000 transfers 
-  minTransferCount <- 10000
+  minTransferCount <- 1
   filteredTokenTransfers <-
     tokenTransfers[address %in% tokenTransfers[, list(count = .N), by=address][
       count >= minTransferCount
@@ -69,6 +69,19 @@ tokenTransfers <- (function() {
   
   compareTokenTransferTables(tokenTransfers, filteredTokenTransfers,
                              paste("Require transfer count >=", minTransferCount))
+  
+  # only top 1000 tokens
+  topTokenCount <- 1000
+  filteredTokenTransfers <- 
+    tokenTransfers[address %in%
+                     tokenTransfers[, list(count = .N), by=address][
+                       order(-rank(count))][
+                         , list(address, num = .I, cumTransfers = cumsum(count))][
+                           num <= 1000]$address]
+  
+  compareTokenTransferTables(tokenTransfers, filteredTokenTransfers,
+                             paste("Select top", topTokenCount, "token contracts by transfer count"))
+  
   
   
   tokenTransfers <- filteredTokenTransfers
