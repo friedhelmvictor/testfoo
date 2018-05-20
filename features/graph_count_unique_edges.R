@@ -7,7 +7,7 @@
 # This function returns the number of edges  
 
 featureTable <- (function(tokenTransferTable, featureTable) {
-  print("Counting number of edges")
+  print("Counting unique (simplified) number of edges")
   
   # Set up progress bbar by number of groups
   numberOfGroups = uniqueN(tokenTransfers$address)
