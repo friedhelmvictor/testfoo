@@ -51,8 +51,9 @@ The following is a summary of the features that are to be included. A checkmark 
 - [x] Number of unique edges ([graph_count_unique_edges.R](/features/graph_count_unique_edges.R))
 - [x] Number of different degrees ([graph_number_of_different_degrees.R](/features/graph_number_of_different_degrees.R))
 - [x] Density ([graph_density.R](/features/graph_density.R))
-- [ ] Mean geodesic distance (Newman - Networks)
-- [x] Shortest path length (graph diameter) (at current status computed for the directed graph) ([graph_diameter.R](/features/graph_diameter.R))
+- [x] Mean, median geodesic distance (mean, median eccentricity) from v to any other v' ([graph_radius_diameter_eccentricity.R](/features/graph_radius_diameter_eccentricity.R))
+- [x] Diameter (at current status computed for the directed graph) ([graph_radius_diameter_eccentricity.R](/features/graph_radius_diameter_eccentricity.R))
+- [x] Radius ([graph_radius_diameter_eccentricity.R](/features/graph_radius_diameter_eccentricity.R))
 - [x] Count of strongly connected components ([graph_count_strong_components.R](/features/graph_count_strong_components.R))
 - [x] Count of weakly connected components ([graph_count_weak_components.R](/features/graph_count_weak_components.R))
 - [x] Count nodes in largest weakly connected component ([graph_count_weak_components.R](/features/graph_count_weak_components.R))
@@ -61,8 +62,6 @@ The following is a summary of the features that are to be included. A checkmark 
 - [x] Degree Power-Law coefficient and KS goodness-of-fit ([graph_degree_power_law_fit.R](/features/graph_degree_power_law_fit.R))
 - [ ] clustering coefficient (average / median?)
 - [ ] closeness centrality (average / median?)
-- [ ] radius
-- [ ] eccentricity
 - [ ] Community structure (how to measure?)
 - [ ] Connectedness of the transaction graph
 - [ ] Graph randomness (Louvain community detection algorithm?)
