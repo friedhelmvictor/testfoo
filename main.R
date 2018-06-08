@@ -62,12 +62,15 @@ if(exists("tokenTransfers") && is.data.table(get("tokenTransfers"))) {
   
   # Add names from contractStats file
   featureTable <- featureTable[erc20ContractStats[,list(address, name)], on="address", nomatch=0]
+  #featureTable <- featureTable[erc20ContractStats, on="address", nomatch=0]
   
   # Execute all files inside /features thereby building the featureTable
   fileSources <- list.files(pattern = "*.R", recursive = T)
-  fileSources <- fileSources[grepl("features", fileSources)]
+  fileSources <- fileSources[grepl("features/", fileSources)]
   ignoreOutput <- sapply(fileSources, source, .GlobalEnv)
   rm(ignoreOutput)
+  
+  fwrite(featureTable, file = "featureTable.csv")
 }
 
-fwrite(featureTable, file = "featureTable.csv")
+
