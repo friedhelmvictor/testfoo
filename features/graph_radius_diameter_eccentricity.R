@@ -8,18 +8,18 @@
 
 featureTable <- (function(tokenTransferTable, featureTable) {
   print("Computing radius, diameter, mean and median eccentricity")
-  
+
   # Set up progress bbar by number of groups
   numberOfGroups = uniqueN(tokenTransfers$address)
   progressBar <- txtProgressBar(min = 0, max = numberOfGroups, style = 3)
-  
-  feature <- tokenTransfers[, 
+
+  feature <- tokenTransfers[,
                             { setTxtProgressBar(progressBar, .GRP);
                               ecc <- igraph::eccentricity(
                                 igraph::simplify(
                                   igraph::graph_from_data_frame(.SD[, list(from, to)])
                                   ), mode = "out")
-                              ecc <- setdiff(ecc, 0) # 0 eccentricity shouldn't be possible?!
+                              #ecc <- setdiff(ecc, 0) # 0 eccentricity shouldn't be possible?!
                               list(graph_radius=min(ecc),
                                    graph_diameter=max(ecc),
                                    graph_mean_eccentricity=mean(ecc),
@@ -27,8 +27,8 @@ featureTable <- (function(tokenTransferTable, featureTable) {
                             }
                             , by = address]
   close(progressBar)
-  
+
   featureTable <- featureTable[feature, on="address"]
   return(featureTable)
-  
+
 })(tokenTransfers, featureTable)
