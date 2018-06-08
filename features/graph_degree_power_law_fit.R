@@ -18,10 +18,14 @@ featureTable <- (function(tokenTransferTable, featureTable) {
   
   # Compute the feature
   feature <- tokenTransfers[, {setTxtProgressBar(progressBar, .GRP);
-    list(graph_indegree_power_law_alpha = degree_distribution_PLfit(graph_from_data_frame(.SD[, list(from, to)]), mode = "in")$alpha,
-         graph_indegree_power_law_KS = degree_distribution_PLfit(graph_from_data_frame(.SD[, list(from, to)]), mode = "in")$KS.stat,
-         graph_outdegree_power_law_alpha = degree_distribution_PLfit(graph_from_data_frame(.SD[, list(from, to)]), mode = "out")$alpha,
-         graph_outdegree_power_law_KS = degree_distribution_PLfit(graph_from_data_frame(.SD[, list(from, to)]), mode = "out")$KS.stat)
+    graph <- simplify(graph_from_data_frame(.SD[, list(from, to)]));
+    plfitin <- power.law.fit(unname(degree(graph, mode="in")), xmin = 1);
+    plfitout <- power.law.fit(unname(degree(graph, mode="out")), xmin = 1);
+    
+    list(graph_indegree_power_law_alpha = plfitin$alpha,
+         graph_indegree_power_law_KS = plfitin$KS.stat,
+         graph_outdegree_power_law_alpha = plfitout$alpha,
+         graph_outdegree_power_law_KS = plfitout$KS.stat)
   }, by=address]
   close(progressBar)
   
