@@ -8,7 +8,7 @@
 
 
 featureTable <- (function(tokenTransferTable, featureTable) {
-  print("Computing the clustering coefficient")
+  print("Computing the global clustering coefficient")
   
   # Set up progress bbar by number of groups
   numberOfGroups = uniqueN(tokenTransfers$address)
@@ -17,7 +17,7 @@ featureTable <- (function(tokenTransferTable, featureTable) {
   # Compute the feature: 
   feature <- tokenTransfers[, 
                             {setTxtProgressBar(progressBar, .GRP);
-                              list(graph_clustering_coefficient = igraph::transitivity(igraph::graph_from_data_frame(.SD[, list(from, to)]), type = "average"))
+                              list(graph_global_clustering_coefficient = igraph::transitivity(igraph::graph_from_data_frame(.SD[, list(from, to)]), type = "global"))
                             },
                             by = address]
   close(progressBar)
