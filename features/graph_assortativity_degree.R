@@ -17,7 +17,7 @@ featureTable <- (function(tokenTransferTable, featureTable) {
   # Compute the feature: 
   feature <- tokenTransfers[, 
                             {setTxtProgressBar(progressBar, .GRP);
-                              list(graph_degree_assortativity = assortativity_degree(graph_from_data_frame(.SD[, list(from, to)])))
+                              list(graph_undir_degree_assortativity = assortativity_degree(simplify(graph_from_data_frame(.SD[, list(from, to)])), directed = F))
                             },
                             by = address]
   close(progressBar)
