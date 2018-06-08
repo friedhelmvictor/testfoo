@@ -8,7 +8,7 @@
 
 
 featureTable <- (function(tokenTransferTable, featureTable) {
-  print("Computing the number of different degrees")
+  print("Computing the number of different in/out degrees and largest of each")
   
   # Set up progress bbar by number of groups
   numberOfGroups = uniqueN(tokenTransfers$address)
@@ -17,7 +17,14 @@ featureTable <- (function(tokenTransferTable, featureTable) {
   # Compute the feature: 
   feature <- tokenTransfers[, 
                             {setTxtProgressBar(progressBar, .GRP);
-                              list(graph_number_of_different_degrees = length(unique(degree(graph_from_data_frame(.SD[, list(from, to)])), loops = FALSE)))
+                              graph <- simplify(graph_from_data_frame(.SD[, list(from, to)]));
+                              indegrees <- degree(graph, mode = "in", loops = FALSE);
+                              outdegrees <- degree(graph, mode = "out", loops = FALSE);
+                              list(graph_unique_indegrees = length(unique(indegrees)),
+                                   graph_largest_indegree = max(indegrees),
+                                   graph_unique_outdegrees = length(unique(outdegrees)),
+                                   graph_largest_outdegree = max(outdegrees))
+                              
                             }
                             , by = address]
   close(progressBar)
